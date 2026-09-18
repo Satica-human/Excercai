@@ -1,0 +1,47 @@
+class HinhTron : Hinh
+{
+    private double r;
+
+    public HinhTron()
+    {
+        r = 1;
+    }
+
+    public HinhTron(double r)
+    {
+        if (r > 0)
+            this.r = r;
+        else
+            this.r = 1;
+    }
+
+    public void Nhap()
+    {
+        do
+        {
+            Console.Write("Nhap ban kinh: ");
+            r = double.Parse(Console.ReadLine());
+
+            if (r <= 0)
+                Console.WriteLine("Ban kinh phai > 0!");
+        } while (r <= 0);
+    }
+
+    public double GetDienTich()
+    {
+        return Math.PI * r * r;
+    }
+
+    public double GetChuVi()
+    {
+        return 2 * Math.PI * r;
+    }
+
+    public void HienThi()
+    {
+        Console.WriteLine("Hinh tron");
+        Console.WriteLine($"Ban kinh: {r}");
+        Console.WriteLine($"Dien tich: {GetDienTich():F2}");
+        Console.WriteLine($"Chu vi: {GetChuVi():F2}");
+    }
+}
