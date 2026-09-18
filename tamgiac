@@ -1,0 +1,82 @@
+class HinhTamGiac : Hinh
+{
+    private double a;
+    private double b;
+    private double c;
+
+    public HinhTamGiac()
+    {
+        a = 3;
+        b = 4;
+        c = 5;
+    }
+
+    public HinhTamGiac(double a, double b, double c)
+    {
+        if (a > 0 && b > 0 && c > 0 &&
+            a + b > c &&
+            a + c > b &&
+            b + c > a)
+        {
+            this.a = a;
+            this.b = b;
+            this.c = c;
+        }
+        else
+        {
+            this.a = 3;
+            this.b = 4;
+            this.c = 5;
+        }
+    }
+
+    public bool IsTamGiac()
+    {
+        return a > 0 && b > 0 && c > 0 &&
+               a + b > c &&
+               a + c > b &&
+               b + c > a;
+    }
+
+    public void Nhap()
+    {
+        do
+        {
+            Console.Write("Nhap canh a: ");
+            a = double.Parse(Console.ReadLine());
+
+            Console.Write("Nhap canh b: ");
+            b = double.Parse(Console.ReadLine());
+
+            Console.Write("Nhap canh c: ");
+            c = double.Parse(Console.ReadLine());
+
+            if (!IsTamGiac())
+                Console.WriteLine("3 canh khong tao thanh tam giac!");
+
+        } while (!IsTamGiac());
+    }
+
+    public double GetChuVi()
+    {
+        return a + b + c;
+    }
+
+    public double GetDienTich()
+    {
+        double p = GetChuVi() / 2;
+
+        // Cong thuc Heron
+        return Math.Sqrt(p * (p - a) * (p - b) * (p - c));
+    }
+
+    public void HienThi()
+    {
+        Console.WriteLine("Hinh tam giac");
+        Console.WriteLine($"Canh a: {a}");
+        Console.WriteLine($"Canh b: {b}");
+        Console.WriteLine($"Canh c: {c}");
+        Console.WriteLine($"Dien tich: {GetDienTich():F2}");
+        Console.WriteLine($"Chu vi: {GetChuVi():F2}");
+    }
+}
