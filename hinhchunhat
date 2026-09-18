@@ -1,0 +1,60 @@
+class HinhChuNhat : Hinh
+{
+    private double dai;
+    private double rong;
+
+    public HinhChuNhat()
+    {
+        dai = 1;
+        rong = 1;
+    }
+
+    public HinhChuNhat(double dai, double rong)
+    {
+        if (dai > 0 && rong > 0)
+        {
+            this.dai = dai;
+            this.rong = rong;
+        }
+        else
+        {
+            this.dai = 1;
+            this.rong = 1;
+        }
+    }
+
+    public void Nhap()
+    {
+        do
+        {
+            Console.Write("Nhap chieu dai: ");
+            dai = double.Parse(Console.ReadLine());
+
+            Console.Write("Nhap chieu rong: ");
+            rong = double.Parse(Console.ReadLine());
+
+            if (dai <= 0 || rong <= 0)
+                Console.WriteLine("Chieu dai va chieu rong phai > 0!");
+
+        } while (dai <= 0 || rong <= 0);
+    }
+
+    public double GetDienTich()
+    {
+        return dai * rong;
+    }
+
+    public double GetChuVi()
+    {
+        return 2 * (dai + rong);
+    }
+
+    public void HienThi()
+    {
+        Console.WriteLine("Hinh chu nhat");
+        Console.WriteLine($"Chieu dai: {dai}");
+        Console.WriteLine($"Chieu rong: {rong}");
+        Console.WriteLine($"Dien tich: {GetDienTich():F2}");
+        Console.WriteLine($"Chu vi: {GetChuVi():F2}");
+    }
+}
