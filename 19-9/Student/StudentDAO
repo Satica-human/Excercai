@@ -1,0 +1,22 @@
+using System.Text.RegularExpressions;
+namespace StudentManagement
+{
+    public class StudentDAO
+    {
+        private readonly List<Student> _students = new();
+
+        public void Add(Student student)
+        {
+            if (!Regex.IsMatch(student.StudentId, @"^SV\d{6}$"))
+                throw new ArgumentException($"Mã sinh viên '{student.StudentId}' không hợp lệ. Yêu cầu: SV + 6 chữ số.");
+            if (_students.Any(s => s.StudentId == student.StudentId))
+                throw new ArgumentException($"Sinh viên với mã '{student.StudentId}' đã tồn tại.");
+            _students.Add(student);
+        }
+        public void Edit(Student student)
+        {
+            var existing = _students.FirstOrDefault(s => s.StudentId == student.StudentId)
+                ?? throw new KeyNotFoundException($"Không tìm thấy sinh viên với mã '{student.StudentId}'.");
+            existing.FullName = student.FullName;
+            existing.Email = student.Email;
+            existing.Major = student.Major;
