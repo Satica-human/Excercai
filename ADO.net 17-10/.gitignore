@@ -1,9 +1,0 @@
-.vs/
-**/bin/
-**/obj/
-*.user
-*.suo
-*.log
-TestResults/
-.idea/
-.DS_Store
