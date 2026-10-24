@@ -7,7 +7,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.1.1" />
-    <PackageReference Include="MySql.Data" Version="26.10.0" />
+    <ProjectReference Include="QuanLySinhVien.Library\QuanLySinhVien.Library.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Business\**\*.cs" />
+    <Compile Remove="DataAccess\**\*.cs" />
+    <Compile Remove="LopHoc.cs" />
+    <Compile Remove="SinhVien.cs" />
+    <Compile Remove="QuanLySinhVien.Library\**\*.cs" />
   </ItemGroup>
 </Project>
